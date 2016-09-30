@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         WebView wv= (WebView) findViewById(R.id.start_gif);
         wv.loadUrl("file:///android_asset/start_gif.gif");
+        wv.getSettings().setUseWideViewPort(true);
     }
 
     private void init() {
@@ -30,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
         boolean isShow=sp.getBoolean("isShow", false);
         if (isShow) {
             it=new Intent(this,work_Activity.class);
+            overridePendingTransition(R.anim.right_in,R.anim.right_out);
         }else {
             it=new Intent(this,guideActivity.class);
+            overridePendingTransition(R.anim.right_in,R.anim.right_out);
         }
         new Thread(){
             @Override
